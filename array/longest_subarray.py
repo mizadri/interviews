@@ -24,32 +24,33 @@ class Solution:
         while(left < len(nums) and right < len(nums)):
             
             while abs(maxValue - minValue) <= limit and right < len(nums):
+                count_dict[nums[right]]
                 maxValue = max(maxValue, nums[right])                
-                minValue = min(minValue, nums[right])
-                count_dict[nums[right]] 
-                longestWindow = max(longestWindow, right-left)
+                minValue = min(minValue, nums[right]) 
                 right += 1
+                longestWindow = max(longestWindow, len(count_dict))
+                
 
             while abs(maxValue - minValue) > limit and left < len(nums):
-                if decrement_count(nums[left]): 
-                    if nums[left] == maxValue:
-                        maxValue = max(nums[left:right+1])
-
-                    if nums[left] == minValue:
-                        minValue = min(nums[left:right+1])
-
                 left += 1
                 if left == right:
                     right += 1
                 
+                if decrement_count(nums[left-1]): 
+                    if nums[left-1] == maxValue:
+                        maxValue = max(nums[left:right+1])
+
+                    if nums[left-1] == minValue:
+                        minValue = min(nums[left:right+1])
                 # for num in range(maxValue, minValue, -1):
                 #     if num in count_dict:
                 #         maxValue = num
                 #         break
 
 
-        return max(longestWindow, right-left)
-    
+        return longestWindow
 sol = Solution()
-res = sol.longestSubarray([2,5,2], 9)
+res = sol.longestSubarray([8,2,4,7], 4)
 print(res) # 2
+# res = sol.longestSubarray([10,1,2,4,7,2], 5)
+# print(res) # 4
