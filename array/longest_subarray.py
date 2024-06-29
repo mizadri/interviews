@@ -28,7 +28,7 @@ class Solution:
                 maxValue = max(maxValue, nums[right])                
                 minValue = min(minValue, nums[right]) 
                 right += 1
-                longestWindow = max(longestWindow, len(count_dict))
+            longestWindow = max(longestWindow, right - left)
                 
 
             while abs(maxValue - minValue) > limit and left < len(nums):
@@ -38,19 +38,20 @@ class Solution:
                 
                 if decrement_count(nums[left-1]): 
                     if nums[left-1] == maxValue:
-                        maxValue = max(nums[left:right+1])
+                        for num in range(maxValue, minValue+1, -1):
+                            if num in count_dict:
+                                maxValue = num
+                                break
 
                     if nums[left-1] == minValue:
-                        minValue = min(nums[left:right+1])
-                # for num in range(maxValue, minValue, -1):
-                #     if num in count_dict:
-                #         maxValue = num
-                #         break
-
+                        for num in range (minValue, maxValue):
+                            if num in count_dict:
+                                minValue = num
+                                break
 
         return longestWindow
 sol = Solution()
-res = sol.longestSubarray([8,2,4,7], 4)
-print(res) # 2
-# res = sol.longestSubarray([10,1,2,4,7,2], 5)
-# print(res) # 4
+# res = sol.longestSubarray([8,2,4,7], 4)
+# print(res) # 2
+res = sol.longestSubarray([10,1,2,4,7,2], 5)
+print(res) # 4
