@@ -30,7 +30,7 @@ class Solution:
                 right += 1
             longestWindow = max(longestWindow, right - left)
                 
-
+            # Either counting in the middle or counting at the end is failing
             while abs(maxValue - minValue) > limit and left < len(nums):
                 left += 1
                 if left == right:
