@@ -34,3 +34,28 @@ The number of nodes in the list is in the range [3, 2 * 105].
 There are no two consecutive nodes with Node.val == 0.
 The beginning and end of the linked list have Node.val == 0.
 """
+class Solution(object):
+    def minDistance(self, cur):
+        head = None
+        last_node = None
+        cur = cur.next
+        sum = 0
+
+        # update sum, (0)* = sum, last_node, head
+        while(cur.next != None):
+            # 0 > 9 > 8 > 0 > 8 > 0 > 7 > 8 > 0
+            if cur.val:
+                sum += cur.val
+            else: # 0
+                if not head:
+                    head = cur
+                    last_node = cur
+                else:
+                    last_node.next = cur
+                cur.val = sum
+                sum = 0
+            
+
+            if cur.next:
+                cur = cur.next
+            
