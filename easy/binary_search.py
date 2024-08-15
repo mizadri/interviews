@@ -29,9 +29,27 @@ Constraints:
 1 <= nums.length <= 10000.
 -10000 < nums[i], target < 10000
 123
-class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        
+  
 
 
 """
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        ix = 0
+
+        left = 0, right = len(nums)
+
+        while(left < right):
+            ix = ((left+right)//2)
+            if (nums[ix] > target):
+                right = right - 1
+            elif (nums[ix] == target):
+                return ix
+            else:
+                left = left + 1
+        return -1
+
+sol = Solution()
+nums = [-1,0,2,4,6,8], target = 4
+sol.search(nums, target)
