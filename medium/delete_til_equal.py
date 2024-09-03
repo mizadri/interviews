@@ -14,8 +14,7 @@ class Solution(object):
                 word1, word2 = word2, word1
             
             inc=1
-            
-
+    
             # Deal when they r equal (searching for longest substr)
             # Count number of chars until a different one is found, if this count is less than len(word)-count
             xeq=2
