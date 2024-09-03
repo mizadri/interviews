@@ -7,7 +7,7 @@ class Solution:
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         # If you rotate k = len(list) you have the same list
         # k / len(list) rotations you can ignore
-        # apply len(list) mod k rotations 
+        # apply len(list) mod k rotations
         #  5 > 4 > 7 > 8 > 3 > 2 > 1
         if not head or not head.next or k == 0:
             return head
