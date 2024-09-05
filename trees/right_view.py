@@ -1,22 +1,17 @@
-from collections import deque
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        if not root:
-            return []
+        def dfs(node, depth, right_view):
+            if not node:
+                return
+            
+            # If this is the first time we've visited this depth, add the node's value
+            if depth == len(right_view):
+                right_view.append(node.val)
+            
+            # Visit the right child first, then the left child
+            dfs(node.right, depth + 1, right_view)
+            dfs(node.left, depth + 1, right_view)
         
-        queue = deque([root])
         right_view = []
-        
-        while queue:
-            level_length = len(queue)
-            for i in range(level_length):
-                node = queue.popleft()
-                if i == level_length - 1:
-                    right_view.append(node.val)
-                
-                if node.left:
-                    queue.append(node.left)
-                if node.right:
-                    queue.append(node.right)
-        
+        dfs(root, 0, right_view)
         return right_view
