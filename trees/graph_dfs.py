@@ -5,7 +5,7 @@ def dfs(graph, start, visited=None):
     
     # Mark the current node as visited
     visited.add(start)
-    print(start, end=" ")  # Print the current node (optional, to track the traversal)
+    # print(start, end=" ")  # Print the current node (optional, to track the traversal)
 
     # Recursively visit all the adjacent vertices that are not visited
     for neighbor in graph[start]:
