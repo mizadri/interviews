@@ -1,5 +1,5 @@
 def quick_sort(arr):
-    # Base case: if the array has 0 or 1 elements, it is already sorted
+       # Base case: if the array has 0 or 1 elements, it is already sorted
     if len(arr) <= 1:
         return arr
     
